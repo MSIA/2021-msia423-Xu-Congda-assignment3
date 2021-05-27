@@ -1,0 +1,36 @@
+model:
+  name: Clouds Classifier
+  author: Congda Xu
+  version: 1.0
+  description: Develop a model that classifies clouds into one of two types.
+  tags:
+    - classifier
+    - clouds
+  dependencies: requirements.txt
+acquire_data:
+  url: 'https://archive.ics.uci.edu/ml/machine-learning-databases/undocumented/taylor/cloud.data'
+  output_path: 'data/clouds.data'
+load_data:
+  path: 'data/clouds.data'
+  columns: ['visible_mean', 'visible_max', 'visible_min',
+            'visible_mean_distribution', 'visible_contrast',
+            'visible_entropy', 'visible_second_angular_momentum',
+            'IR_mean', 'IR_max', 'IR_min']
+prepare_data:
+  get_features:
+    columns: ['visible_mean', 'visible_max', 'visible_min',
+              'visible_mean_distribution', 'visible_contrast',
+              'visible_entropy', 'visible_second_angular_momentum',
+              'IR_mean', 'IR_max', 'IR_min']
+  additional_features:
+    additional: ['log_entropy', 'entropy_x_contrast', 'IR_range', 'IR_norm_range']
+  get_target:
+    target_name: 'class'
+split_data:
+  ratio: 0.4
+train_model:
+  n_estimators: 10
+  max_depth: 10
+  initial_features: ['log_entropy', 'IR_norm_range', 'entropy_x_contrast']
+score_model:
+  initial_features: ['log_entropy', 'IR_norm_range', 'entropy_x_contrast']
