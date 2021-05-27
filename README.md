@@ -5,18 +5,18 @@
 ## Build the image
 
 ```bash
- docker build -f Dockerfile_bash -t bash-example .
+ docker build -f Dockerfile_bash -t xu-clouds .
 ```
 
 ## Execute the pipeline
 
 
 ```bash
-docker run --mount type=bind,source="$(pwd)/data",target=/app/data/ bash-example run-pipeline.sh
+docker run --mount type=bind,source="$(pwd)/data",target=/app/data/ xu-clouds run-pipeline.sh
 ```
 
 ## Run tests
 
 ```bash
-docker run --mount type=bind,source="$(pwd)/data",target=/app/data/ bash-example run-test.sh
+docker run --mount type=bind,source="$(pwd)/data",target=/app/data/ xu-clouds run-test.sh
 ``` 
