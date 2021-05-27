@@ -18,5 +18,5 @@ docker run --mount type=bind,source="$(pwd)/data",target=/app/data/ bash-example
 ## Run tests
 
 ```bash
-docker run --mount type=bind,source="$(pwd)/data",target=/app/data/ bash-example run-tests.sh
+docker run --mount type=bind,source="$(pwd)/data",target=/app/data/ bash-example run-test.sh
 ``` 
